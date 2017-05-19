@@ -137,3 +137,4 @@ Now we have audio (only speaker tested so far but it's a good start).
 - Bluetooth not used (I don't care)
 - AppleHDA with CX20753/4 issue
 - Touchpad is working though disabled in BIOS (but touchpad click is actually disabled)
+- Backlight level and keyboard leds not functional (not investigated so far)
