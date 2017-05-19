@@ -3,10 +3,12 @@
 ## Description
 This is a quick manual for those interested in trying to run OS X natively on the Lenovo Thinkpad Carbon x1. No spoonfeeding, read and experiment yourself reading @rehabman documentation. This guide is aimed at giving my feedback and help others figuring out they actually *CAN* do it, if they can read and understand the guides. If you don't, please do not open issues. If you do, please try and give me some feedback.
 
+** This is not a perfect setup but it suits my needs as a machine for work (I'm a developer). **
+
 #### Why El Capitan?
 **TL;DR** Karabiner not compatible with Sierra.
 
-At the time of writing Sierra is out for a little while but as an old PC user I heavily depend on Karabiner to map my PC keys - keyboard has always been the reason I could not work with a real mac - that may sound stupid but this is my choice. Anyways, there should be no issue to go with Sierra.
+At the time of writing Sierra is out for a little while but as an old PC user I heavily depend on Karabiner to map my PC keys - keyboard has always been the reason I could not work with a real mac. Anyways, there should be no issue to go with Sierra.
 
 ## Laptop specs
 The laptop is a 4th gen (20FB) model with:
@@ -21,11 +23,18 @@ The laptop is a 4th gen (20FB) model with:
 - ACPI and battery
 - Graphics and HDMI output
 - Audio
+- USB3
 
 ## Not working
-- Wifi (Intel) - use a wifi dongle (e.g. DWA-131) or stop reading this.
+- Wifi (Intel) - use a wifi dongle (e.g. DWA-131) or **stop reading this**.
 - Webcam
-- Bluetooth (not tried, may work anyways)
+
+## Not used
+- HiDPI - fonts are REALLY small on the display, but I actually like it. See https://www.tonymacx86.com/threads/adding-using-hidpi-custom-resolutions.133254/ to give it a try.
+- Bluetooth
+- SD Card
+- Fingerprint sensor
+- Touchpad (I always use an external mouse, and optionally the pointing stick)
 
 ## Tools used
 - Clover v2.4k r4061 with Clover Configurator
@@ -36,7 +45,6 @@ The laptop is a 4th gen (20FB) model with:
 - Rehabman's patch-nvme
 
 ## Mandatory Reads
-Please read Rehabman. I mean it.
 - https://www.tonymacx86.com/threads/guide-booting-the-os-x-installer-on-laptops-with-clover.148093/
 - https://www.tonymacx86.com/threads/faq-read-first-laptop-frequent-questions.164990/
 - https://www.tonymacx86.com/threads/guide-hackrnvmefamily-co-existence-with-ionvmefamily-using-class-code-spoof.210316/
@@ -48,21 +56,18 @@ Please read Rehabman. I mean it.
 - Windows 10 running on the target x1 Carbon (will be erased, use Clonezilla to backup if needed)
 
 ## Step 1 - USB stick setup
-- Follow Rehabman's guide for installing Clover on USB. config.plist is https://github.com/RehabMan/OS-X-Clover-Laptop-Config/blob/master/config_HD520_530_540.plist
+- Follow Rehabman's guide for installing Clover on USB. 
+- config.plist is Rehabman's config_HD520_530_540.plist
 - Follow Rehabman's guide for patching NVMe using class-code spoof. I had no issues at all.
 - Kexts used in Clover USB EFI:
-
-  * Rehabman's FakeSMC
-  * Rehabman's HackrNVMeFamily (do *NOT* forget the --spoof)
-  * Rehabman's VoodooPS2Controller
-
-- SSDT patches in USB EFI: NVMe patch
+    * Rehabman's FakeSMC
+    * Rehabman's HackrNVMeFamily (do *NOT* forget the --spoof)
+    * Rehabman's VoodooPS2Controller
+- SSDT patches in USB EFI (NVMe patch)
 - drivers64UEFI:
-
-  * HFSPlus.efi
-  * EmuVariableUefi-64.efi (may be not mandatory?)
-  * OsxAptioFixDrv-64.efi
-
+    * HFSPlus.efi
+    * EmuVariableUefi-64.efi (may be not mandatory?)
+    * OsxAptioFixDrv-64.efi
 - Copy useful files and software to the main USB install partition for later use
 
 ## Step 2 - USB Installation
@@ -99,11 +104,9 @@ Now we have a valid, up-to-date, bootable El Capitan on HD with ethernet.
 - Generate base DSDT using F4 when on Clover boot menu screen (see Rehabman SSDT/DSDT guide)
 - Open DSDT with MaciASL and compile it. Errors may occur, fix them applying patches or manually (I had to).
 - Apply base patches:
-
-  * sys HDEF
-  * sys IRQ
-  * bat x220
-  
+    * sys HDEF
+    * sys IRQ
+    * bat x220
 - Compile and save DSDT aml to HD EFI
 - Install Rehabman's ACPIBatteryManager v7
 - Reboot
@@ -111,7 +114,7 @@ Now we have a valid, up-to-date, bootable El Capitan on HD with ethernet.
 Now we have a working power and battery management.
 
 ## Step 5 - Audio
-This is the most delicate part. I use AppleHDA patcher from Mirone but had issues patching for this laptop's audio chip Conexant CX20753/4 (codec 14F15111). After numerous unsuccessful attemps I managed to get an old fully patched AppleHDA kext from Mirone from this thread: https://www.tonymacx86.com/threads/applehda-patch-problem-for-conexant-cx20753-4-14f1-5111.191289/ (used the v7 version with external mic not working).
+This is the most delicate part. I use AppleHDA patcher from Mirone but had issues patching for this laptop's audio chip Conexant CX20753/4 (codec 14F15111). After numerous unsuccessful attemps I managed to get an old fully patched AppleHDA kext from this thread: https://www.tonymacx86.com/threads/applehda-patch-problem-for-conexant-cx20753-4-14f1-5111.191289/ (From Mirone, used the v7 version with external mic not working).
 
 - Patch DSDT with audio 3 layout
 - Install AppleHDA v7 in HD S/L/E (will have to reinstall after each update but sound is not a critical component)
@@ -132,18 +135,4 @@ Now we have audio (only speaker tested so far but it's a good start).
 - Webcam not detected (might be an internal USB issue, not deeply investigated so far)
 - Bluetooth not used (I don't care)
 - AppleHDA with CX20753/4 issue
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Touchpad is working though disabled in BIOS (but touchpad click is actually disabled)
