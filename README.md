@@ -61,9 +61,9 @@ The laptop is a 4th gen (20FB) model with:
 - config.plist is Rehabman's config_HD520_530_540.plist
 - Follow Rehabman's guide for patching NVMe using class-code spoof. I had no issues at all.
 - Kexts used in Clover USB EFI:
-    * Rehabman's FakeSMC
-    * Rehabman's HackrNVMeFamily (do *NOT* forget the --spoof)
-    * Rehabman's VoodooPS2Controller
+    * FakeSMC
+    * HackrNVMeFamily (do *NOT* forget the --spoof)
+    * VoodooPS2Controller
 - SSDT patches in USB EFI (NVMe patch)
 - drivers64UEFI:
     * HFSPlus.efi
