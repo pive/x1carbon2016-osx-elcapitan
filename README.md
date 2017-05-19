@@ -109,7 +109,7 @@ Now we have a valid, up-to-date, bootable El Capitan on HD with ethernet.
     * sys IRQ
     * bat x220
 - Compile and save DSDT aml to HD EFI
-- Install Rehabman's ACPIBatteryManager v7
+- Install Rehabman's ACPIBatteryManager
 - Reboot
 
 Now we have a working power and battery management.
