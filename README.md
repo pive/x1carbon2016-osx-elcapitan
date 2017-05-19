@@ -35,6 +35,7 @@ The laptop is a 4th gen (20FB) model with:
 - SD Card
 - Fingerprint sensor
 - Touchpad (I always use an external mouse, and optionally the pointing stick)
+- Backlight level
 
 ## Tools used
 - Clover v2.4k r4061 with Clover Configurator
