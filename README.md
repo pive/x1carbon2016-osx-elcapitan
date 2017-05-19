@@ -86,7 +86,7 @@ Boot from USB, graphics are working (no DVMT-prealloc issue)! Then follow Rehabm
 
 Now we have a valid, up-to-date El Capitan on HD, ethernet not working yet.
 
-## Step 3 - HD post-install
+## Step 3 - Enabling HD boot
 - Install Clover on HD using same parameters as USB stick, use same config.plist as a base
 - Patch NVMe with Rehabman's script again (driver was updated)
 - The only mandatory kexts are HackNVMe + fakeSMC
