@@ -3,12 +3,12 @@
 ## Description
 This is a quick manual for those interested in trying to run OS X natively on the Lenovo Thinkpad Carbon x1. No spoonfeeding, read and experiment yourself reading @rehabman documentation. This guide is aimed at giving my feedback and help others figuring out they actually *CAN* do it, if they can read and understand the guides. If you don't, please do not open issues. If you do, please try and give me some feedback.
 
-** This is not a perfect setup but it suits my needs as a machine for work (I'm a developer). **
-
 #### Why El Capitan?
 **TL;DR** Karabiner not compatible with Sierra.
 
-At the time of writing Sierra is out for a little while but as an old PC user I heavily depend on Karabiner to map my PC keys - keyboard has always been the reason I could not work with a real mac. Anyways, there should be no issue to go with Sierra.
+At the time of writing Sierra is out for a little while but as an old PC developer I heavily depend on Karabiner to map my PC keys - keyboard has always been the reason I could not work with a real mac. Anyways, there should be no issue to go with Sierra.
+
+**This is not a perfect setup but it suits my needs as a machine for work.**
 
 ## Laptop specs
 The laptop is a 4th gen (20FB) model with:
